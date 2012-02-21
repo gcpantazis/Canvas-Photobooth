@@ -14,3 +14,9 @@ Get the source.
 
   * Create a canvas view to take 3-4 snapshots, stitch them together, then save the composition back to the server. If internet connection is available, each saved strip will then be posted to a predefined Flickr account.
   * Figure out how to execute bash script from PHP without sudoing.
+
+
+Notes
+-------------------------------------------------------------
+
+  * Using isightcapture, which seems like abandonware but works beautifully. Found the .dmg here: http://deography.com/record/
