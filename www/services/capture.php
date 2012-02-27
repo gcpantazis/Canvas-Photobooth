@@ -2,7 +2,7 @@
 
 	include("config.php");
 
-	$imgPath = "images/" . time() . ".png";
+	$imgPath = "../images/" . time() . ".png";
 
 	// Use isightcapture bin to init the capture.
 	// Use an un-versioned config file to temporarily supply un/pass.
@@ -10,6 +10,6 @@
 	exec($command." 2>&1", $test);
 	
 	// echo out a string once capture is complete.
-	echo "<img src='" . $imgPath . "' />";
+	echo "<img src='/" . $imgPath . "' />";
 
 ?>
