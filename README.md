@@ -20,3 +20,4 @@ Notes
 -------------------------------------------------------------
 
   * Using isightcapture, which seems like abandonware but works beautifully. Found the .dmg here: http://deography.com/record/
+  * The HTML layer will be listening for keypresses (numbers keys 1-5) I'll be interfacing with the buttons via an Arduino/Python serial connection. This is overkill just for buttons (You could just as easily take apart a keyboard and solder onto the keys you need) but [A] I want a little flexibility if I decide to add LEDs and such and [B] I wanted an excuse to play with Arduino and Python.
