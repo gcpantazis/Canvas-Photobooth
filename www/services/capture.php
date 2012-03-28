@@ -2,14 +2,17 @@
 
 	include("config.php");
 
-	$imgPath = "../images/" . time() . ".png";
+	header('Content-type: application/json');
+	chdir('../images');
+
+	$imgPath = time() . ".png";
 
 	// Use isightcapture bin to init the capture.
 	// Use an un-versioned config file to temporarily supply un/pass.
 	$command = 'sudo -u ' . $username . ' -p ' . $password . ' isightcapture -t png ' . $imgPath;
 	exec($command." 2>&1", $test);
 	
-	// echo out a string once capture is complete.
-	echo "<img src='/" . $imgPath . "' />";
+	// echo json once capture is complete.
+	echo json_encode(array("imagePath" => "http://" . $_SERVER['HTTP_HOST'] . "/images/" . $imgPath));
 
 ?>
