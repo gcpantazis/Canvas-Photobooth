@@ -6,7 +6,7 @@ import time
 import serial
 import os
 
-ser = serial.Serial('/dev/tty.usbmodemfa141', 9600)
+ser = serial.Serial('/dev/tty.usbmodemfd1321', 9600)
 currentbtn = "BTNUP"
 lastbtn = currentbtn
 
@@ -31,8 +31,8 @@ while 1:
 			currentbtn = "1"
 		else:
 			currentbtn = "BTNUP"
-	except:  
-		print "Failed to send!"  
+	except:
+		print "Failed to send!"
 
 	if lastbtn != currentbtn:
 		lastbtn = currentbtn
@@ -45,4 +45,4 @@ while 1:
 			os.system(cmd)
 
 	time.sleep(0.03)
-    
+
