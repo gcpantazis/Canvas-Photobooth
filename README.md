@@ -5,15 +5,17 @@ This project's goal is to develop an OSX web-based photobooth that accesses the 
 
 Current Status
 -------------------------------------------------------------
-Using the isightcapture script to access and save a photo from an OSX webcam (attached to the system functioning as the server).
+
+  * Using the isightcapture script to access and save a photo from an OSX webcam (attached to the system functioning as the server).
+  * Takes 4 pics, loads them into the DOM, then composites them together using HTML2Canvas. Composite is saved back to the server to await transfer.
 
 
-Current Status
+TODO
 -------------------------------------------------------------
-Get the source.
 
-  * Create a canvas view to take 3-4 snapshots, stitch them together, then save the composition back to the server. If internet connection is available, each saved strip will then be posted to a predefined Flickr account.
-  * Figure out how to execute bash script from PHP without sudoing.
+  * Save composite photo to Flickr account.
+  * Style interface, work out UI flow.
+  * Figure out how to execute the bash script from PHP without sudoing.
 
 
 Notes
