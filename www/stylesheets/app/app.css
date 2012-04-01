@@ -3,8 +3,6 @@
 *
 */
 
-#photostrip {}
-#photo1 {}
-#photo2 {}
-#photo3 {}
-#photo4 {}
+#photostrip { float: left; height: 1024px; }
+#photostrip > div { height: 25%; }
+#photostrip > div img { height: 92%; margin: 4%; }

@@ -35,6 +35,9 @@ var IndexView = Backbone.View.extend({
 				view.captureAll();
 				return;
 			}
+			if ( data.key === 53 && view.photosComplete ) {
+				view.sendPhotoToServer();
+			}
 		}
 	},
 
@@ -63,7 +66,9 @@ var IndexView = Backbone.View.extend({
 		view.captureImage(1, function(){
 			view.captureImage(2, function(){
 				view.captureImage(3, function(){
-					view.captureImage(4);
+					view.captureImage(4, function() {
+						view.photosComplete = true;
+					});
 				});
 			});
 		});
