@@ -3,6 +3,9 @@
 *
 */
 
-#photostrip { float: left; height: 1024px; }
-#photostrip > div { height: 25%; }
-#photostrip > div img { height: 92%; margin: 4%; }
+#photostrip { float: left; }
+#photostrip > div { height: 240px; position: relative; width: 340px; }
+#photostrip .slide_overlay,
+#photostrip > div img { height: 100%; left: 0; position: absolute; top: 0; width: 100%; z-index: 0; }
+#photostrip .slide_overlay { background-image: url("/images/ui/photo_slide.png"); background-repeat: no-repeat; z-index: 2; }
+
