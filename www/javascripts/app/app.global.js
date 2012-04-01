@@ -20,6 +20,10 @@ App.Global = (function(window, document) {
 			App.routers.galleryRouter = new AppRouter;
 			Backbone.history.start();
 
+			$(document).keypress(function(e) {
+				App.trigger('press:key', {key: e.keyCode});
+			});
+
 			log("Global : Initialized");
 		}
 	};
