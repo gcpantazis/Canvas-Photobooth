@@ -7,11 +7,14 @@ var IndexView = Backbone.View.extend({
 
 	el: $('#section_content'),
 
-	events: {},
+	events: {
+		'click #capture': 'captureImage',
+		'click #send': 'sendPhotoToServer'
+	},
 
 	initialize: function(options) {
 
-		_.bindAll(this, 'render');
+		_.bindAll(this);
 
 		App.bind('show:index', this.render);
 
@@ -21,6 +24,22 @@ var IndexView = Backbone.View.extend({
 	render: function() {
 		var indexTemplate = _.template($('#example_backbone_template').html());
 		this.el.html(indexTemplate);
-	}
+	},
 
+	captureImage: function() {
+		$.ajax({
+			url: '/services/capture.php',
+			dataType: 'json',
+			success: function(data){
+				var newImg = $('<img src="'+data.imagePath+'" />');
+				$('#photostrip').append(newImg);
+			}
+		});
+	},
+
+	sendPhotoToServer: function() {
+		$('#photostrip').html2canvas({onrendered: function(canvas){
+			var dataUri = canvas.toDataURL();
+		}})
+	}
 });

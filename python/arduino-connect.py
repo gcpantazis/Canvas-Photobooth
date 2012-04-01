@@ -41,7 +41,10 @@ while 1:
 			# If the current button is one of the desired values (1-5), execute applescript
 			# to trigger that keystroke.
 
-			cmd = '''osascript -e 'tell application "System Events" to keystroke "''' + currentbtn + '''"' '''
+			cmd = '''osascript -e 'tell application "System Events" to keystroke "'''
+			cmd += currentbtn
+			cmd += '''"' '''
+
 			os.system(cmd)
 
 	time.sleep(0.03)

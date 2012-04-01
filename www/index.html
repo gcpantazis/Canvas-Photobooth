@@ -22,7 +22,10 @@
 		<link rel="stylesheet" href="stylesheets/app/print.css" media="print" />
 
 		<script type="text/template" id="example_backbone_template">
-			Test Template
+			<div id="photostrip">
+				<a href="#" id="capture">Take Photos</a>
+				<a href="#" id="send">Send To Server</a>
+			</div>
 		</script>
 
 	</head>
@@ -42,6 +45,8 @@
 				.script('javascripts/lib/backbone.js').wait()
 				// Plugins
 				.script('javascripts/plugins/jquery.easing.1.3.js').wait()
+				.script('javascripts/plugins/html2canvas.js').wait()
+				.script('javascripts/plugins/jquery.html2canvas.js').wait()
 				// Backbone - Controllers
 				.script('javascripts/app/controller/AppRouter.js')
 				// Backbone - Models
