@@ -39,7 +39,21 @@ var IndexView = Backbone.View.extend({
 
 	sendPhotoToServer: function() {
 		$('#photostrip').html2canvas({onrendered: function(canvas){
-			var dataUri = canvas.toDataURL();
+			$.ajax({
+				url: '/services/savecanvas.php',
+				dataType: 'json',
+				type: 'POST',
+				data: {
+					img: canvas.toDataURL()
+				},
+				success: function(data){
+					var newImg = $('<img src="'+data.imagePath+'" />');
+					$('#photostrip').append(newImg);
+				},
+				error: function(msg){
+					console.log(msg);
+				}
+			});
 		}})
 	}
 });
