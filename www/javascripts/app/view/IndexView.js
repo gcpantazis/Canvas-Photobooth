@@ -14,8 +14,6 @@ var IndexView = Backbone.View.extend({
 
 		_.bindAll(this);
 
-		this.captures = 0;
-
 		App.bind('show:index', this.render);
 		App.bind('press:key', this.keyPress);
 
@@ -33,7 +31,7 @@ var IndexView = Backbone.View.extend({
 
 		// Mapping only numbers 1-5.
 		if ( data.key >= 49 && data.key <= 53 ) {
-			if ( view.captures === 0 ) {
+			if ( !view.started ) {
 				view.captureAll();
 				return;
 			}
@@ -48,10 +46,9 @@ var IndexView = Backbone.View.extend({
 			url: '/services/capture.php',
 			dataType: 'json',
 			success: function(data){
-				view.captures++;
 				var newImg = $('<img src="'+data.imagePath+'" />');
 				$('#photo' + whichSlide).append(newImg);
-				cb();
+				if (cb) cb();
 			}
 		});
 	},
@@ -59,6 +56,8 @@ var IndexView = Backbone.View.extend({
 	captureAll: function() {
 
 		var view = this;
+
+		view.started = true;
 
 		// This seems dirty, but the service callback takes forever to execute.
 		view.captureImage(1, function(){

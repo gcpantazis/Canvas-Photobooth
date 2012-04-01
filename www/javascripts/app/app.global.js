@@ -21,7 +21,7 @@ App.Global = (function(window, document) {
 			Backbone.history.start();
 
 			$(document).keypress(function(e) {
-				App.trigger('press:key', {key: e.keyCode});
+				App.trigger('press:key', {key: e.charCode});
 			});
 
 			log("Global : Initialized");
