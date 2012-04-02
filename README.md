@@ -8,13 +8,13 @@ Current Status
 
   * Using the isightcapture script to access and save a photo from an OSX webcam (attached to the system functioning as the server).
   * Takes 4 pics, loads them into the DOM, then composites them together using HTML2Canvas. Composite is saved back to the server to await transfer.
+  * Uses PHP mail() to send file on over to Flickr. Or anywhere else your heart desires.
 
 
 TODO
 -------------------------------------------------------------
 
-  * Save composite photo to Flickr account.
-  * Style interface, work out UI flow.
+* Style interface, work out UI flow.
   * Figure out how to execute the bash script from PHP without sudoing.
 
 
