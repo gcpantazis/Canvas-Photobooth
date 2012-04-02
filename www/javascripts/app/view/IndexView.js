@@ -38,6 +38,9 @@ var IndexView = Backbone.View.extend({
 			if ( data.key === 53 && view.photosComplete ) {
 				view.sendPhotoToServer();
 			}
+			if ( data.key >= 49 && data.key <= 52 && view.photosComplete ) {
+				view.retakePhoto(data.key - 48);
+			}
 		}
 	},
 
@@ -49,8 +52,15 @@ var IndexView = Backbone.View.extend({
 			url: '/services/capture.php',
 			dataType: 'json',
 			success: function(data){
-				var newImg = $('<img src="'+data.imagePath+'" />');
-				$('#photo' + whichSlide).append(newImg);
+				var newImg = $('<img src="'+data.imagePath+'" />'),
+					$container = $('#photo' + whichSlide),
+					$images = $container.find('img');
+
+				if ( $images.length > 0 ) {
+					$images.remove();
+				}
+
+				$container.append(newImg);
 				if (cb) cb();
 			}
 		});
@@ -74,6 +84,17 @@ var IndexView = Backbone.View.extend({
 		});
 	},
 
+	retakePhoto: function(which) {
+
+		var view = this;
+
+		view.photosComplete = false;
+
+		view.captureImage(which, function() {
+			view.photosComplete = true;
+		});
+	},
+
 	sendPhotoToServer: function() {
 		$('#photostrip').html2canvas({onrendered: function(canvas){
 			$.ajax({
@@ -85,7 +106,7 @@ var IndexView = Backbone.View.extend({
 				},
 				success: function(data){
 					var newImg = $('<img src="'+data.imagePath+'" />');
-					$('#photostrip').append(newImg);
+					$('#preview').html(newImg);
 				},
 				error: function(msg){
 					console.log(msg);
