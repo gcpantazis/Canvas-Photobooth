@@ -14,7 +14,7 @@ Current Status
 TODO
 -------------------------------------------------------------
 
-* Style interface, work out UI flow.
+  * Style interface, work out UI flow.
   * Figure out how to execute the bash script from PHP without sudoing.
 
 
