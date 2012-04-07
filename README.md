@@ -5,6 +5,7 @@ This project's goal is to develop an OSX web-based photobooth that accesses the 
 How to use
 -------------------------------------------------------------
 If you want to try to use this, you'll need the following software / objects.
+
   * An arduino board to run the buttons (but as mentioned below, you could just hack a keyboard apart instead)
   * MAMP, or some other Apache/PHP setup with postfix support. I just use MAMP Pro.
   * A Flickr account, if you follow it exactly. But it can also forward the photos to any email address.
