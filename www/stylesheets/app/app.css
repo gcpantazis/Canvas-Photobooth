@@ -3,9 +3,13 @@
 *
 */
 
-#photostrip { left: 50%; margin: 0 0 0 -120px; position: absolute; top: 0; }
-#photostrip > div { height: 240px; overflow: hidden; position: relative; width: 240px; }
+body { background-image: url("../../images/ui/woodbg.jpg"); }
+
+h2 { background-image: url("../../images/ui/logo.png"); background-position: center bottom; background-repeat: no-repeat; height: 80px; text-indent: -999em; }
+
+#photostrip { background-image: url("../../images/ui/strip_bg.jpg"); background-position: center center; left: 50%; margin: 20px 0 20px -130px; padding: 10px; position: absolute; top: 0; }
+#photostrip .slide { background-image: url("../../images/ui/photo_slide_bg.jpg"); background-position: center top; background-size: 190% auto; height: 240px; overflow: hidden; position: relative; width: 240px; }
 #photostrip .slide_overlay,
-#photostrip > div img { height: 100%; left: 0; position: absolute; top: 0; width: 100%; z-index: 0; }
+#photostrip .slide img { height: 100%; left: 0; position: absolute; top: 0; width: 100%; z-index: 0; }
 #photostrip .slide_overlay { background-image: url("/images/ui/photo_slide.png"); background-repeat: no-repeat; z-index: 2; }
-#photostrip > div img { left: -40px; width: auto; }
+#photostrip .slide img { left: -40px; top: -100%; width: auto; }

@@ -6,7 +6,7 @@ import time
 import serial
 import os
 
-ser = serial.Serial('/dev/tty.usbmodemfd1321', 9600)
+ser = serial.Serial('/dev/tty.usbmodemfa141', 9600)
 currentbtn = "BTNUP"
 lastbtn = currentbtn
 

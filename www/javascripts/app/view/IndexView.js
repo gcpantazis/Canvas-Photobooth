@@ -46,21 +46,27 @@ var IndexView = Backbone.View.extend({
 
 	captureImage: function(whichSlide, cb) {
 
-		var view = this;
+		var view = this,
+			$container = $('#photo' + whichSlide),
+			$image = $container.find('img');
+
+		if ( $image.length > 0 ) {
+			$image.animate({'top': '-100%'}, 200, function(){
+				$image.remove();
+			});
+		}
 
 		$.ajax({
 			url: '/services/capture.php',
 			dataType: 'json',
 			success: function(data){
-				var newImg = $('<img src="'+data.imagePath+'" />'),
-					$container = $('#photo' + whichSlide),
-					$images = $container.find('img');
 
-				if ( $images.length > 0 ) {
-					$images.remove();
-				}
+				var newImg = $('<img src="'+data.imagePath+'" />');
 
 				$container.append(newImg);
+				$image = $container.find('img');
+				$image.animate({'top': '0%'}, 200);
+
 				if (cb) cb();
 			}
 		});
@@ -105,8 +111,7 @@ var IndexView = Backbone.View.extend({
 					img: canvas.toDataURL()
 				},
 				success: function(data){
-					var newImg = $('<img src="'+data.imagePath+'" />');
-					$('#preview').html(newImg);
+					alert('sent');
 				},
 				error: function(msg){
 					console.log(msg);
