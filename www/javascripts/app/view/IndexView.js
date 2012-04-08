@@ -25,6 +25,31 @@ var IndexView = Backbone.View.extend({
 		this.el.html(indexTemplate);
 	},
 
+	unload: function() {
+
+		var view = this,
+			$photoStrip = view.el.find('#photostrip'),
+			$photoImgs = $photoStrip.find('.photo_img');
+
+		$photoStrip.removeClass('active');
+
+		$photoStrip.on('transitionend webkitTransitionEnd', function(){
+			$photoImgs.remove();
+			view.started = false;
+			view.photosComplete = false;
+			$(this).off();
+		});
+	},
+
+	showStrip: function() {
+
+		var view = this;
+
+		_.defer(function(){
+			view.el.find('#photostrip').addClass('active');
+		});
+	},
+
 	keyPress: function(data){
 
 		var view = this;
@@ -32,16 +57,36 @@ var IndexView = Backbone.View.extend({
 		// Mapping only numbers 1-5.
 		if ( data.key >= 49 && data.key <= 53 ) {
 			if ( !view.started ) {
+				view.showStrip();
 				view.captureAll();
 				return;
-			}
-			if ( data.key === 53 && view.photosComplete ) {
+			} else if ( data.key === 53 && view.photosComplete ) {
 				view.sendPhotoToServer();
-			}
-			if ( data.key >= 49 && data.key <= 52 && view.photosComplete ) {
+			} else if ( data.key >= 49 && data.key <= 52 && view.photosComplete ) {
 				view.retakePhoto(data.key - 48);
 			}
 		}
+
+		// Debug Key. Leaving it in since it's not exposed to the user.
+		if ( data.key === 48 ) {
+			view.unload();
+		}
+	},
+
+	clearImage: function($image, cb) {
+
+		var view = this;
+
+		if ( $image.length === 0 ) {
+			if (cb) cb();
+		} else {
+			$image.removeClass('active');
+			$image.on('transitionend webkitTransitionEnd', function(){
+				$(this).remove();
+				if (cb) cb();
+			});
+		}
+
 	},
 
 	captureImage: function(whichSlide, cb) {
@@ -50,25 +95,25 @@ var IndexView = Backbone.View.extend({
 			$container = $('#photo' + whichSlide),
 			$image = $container.find('img');
 
-		if ( $image.length > 0 ) {
-			$image.animate({'top': '-100%'}, 200, function(){
-				$image.remove();
+		view.clearImage($image, function(){
+			$.ajax({
+				url: '/services/capture.php',
+				dataType: 'json',
+				success: function(data){
+
+					var newImg = $('<img class="photo_img" src="'+data.imagePath+'" />');
+
+					$container.append(newImg);
+					$image = $container.find('img');
+
+					// Really should use imagesloaded here.
+					_.delay(function(){
+						$image.addClass('active');
+					}, 500);
+
+					if (cb) cb();
+				}
 			});
-		}
-
-		$.ajax({
-			url: '/services/capture.php',
-			dataType: 'json',
-			success: function(data){
-
-				var newImg = $('<img src="'+data.imagePath+'" />');
-
-				$container.append(newImg);
-				$image = $container.find('img');
-				$image.animate({'top': '0%'}, 200);
-
-				if (cb) cb();
-			}
 		});
 	},
 
