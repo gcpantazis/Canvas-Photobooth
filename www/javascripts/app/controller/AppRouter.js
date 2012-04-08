@@ -8,7 +8,7 @@ var AppRouter = Backbone.Router.extend({
 	initialize: function() {
 
 		// Initialize Section Views
-		indexView = new IndexView();
+		photostripView = new PhotostripView();
 
 		log("Backbone : AppRouter : Initialized");
 	},

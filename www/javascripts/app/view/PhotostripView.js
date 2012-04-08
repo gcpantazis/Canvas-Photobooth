@@ -1,9 +1,9 @@
 /*
- * IndexView.js
+ * PhotostripView.js
  *
  */
 
-var IndexView = Backbone.View.extend({
+var PhotostripView = Backbone.View.extend({
 
 	el: $('#section_content'),
 
@@ -17,7 +17,7 @@ var IndexView = Backbone.View.extend({
 		App.bind('show:index', this.render);
 		App.bind('press:key', this.keyPress);
 
-		log("Backbone : IndexView : Initialized");
+		log("Backbone : PhotostripView : Initialized");
 	},
 
 	render: function() {
