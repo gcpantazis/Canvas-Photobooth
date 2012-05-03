@@ -29,6 +29,7 @@ var ModalView = Backbone.View.extend({
 		App.modalActive = true;
 
 		var view = this,
+			timeoutDuration = message.timeout || 0,
 			viewModel = {
 				text: message.text
 			};
@@ -41,7 +42,13 @@ var ModalView = Backbone.View.extend({
 		if ( message.timeout ) {
 			_.delay(function(){
 				view.hide();
-			}, message.timeout);
+			}, timeoutDuration);
+		}
+
+		if ( message.cb ) {
+			_.delay(function(){
+				message.cb();
+			}, timeoutDuration);
 		}
 
 	},

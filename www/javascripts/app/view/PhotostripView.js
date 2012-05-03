@@ -22,7 +22,20 @@ var PhotostripView = Backbone.View.extend({
 
 	render: function() {
 		var indexTemplate = _.template($('#photostrip_template').html());
+
 		this.el.html(indexTemplate);
+		this.instructionalModal();
+	},
+
+	instructionalModal: function() {
+
+		var view = this;
+
+		App.trigger('show:modal', {
+			text: 'Welcome to the photobooth! Press any key to start taking your photos!'
+		});
+
+		view.initialModalOpen = true;
 	},
 
 	unload: function() {
@@ -56,10 +69,11 @@ var PhotostripView = Backbone.View.extend({
 
 		// Mapping only numbers 1-5.
 		if ( data.key >= 49 && data.key <= 53 ) {
-			if ( !view.started ) {
+			if (view.initialModalOpen) {
+				App.trigger('hide:modal');
+				view.initialModalOpen = false;
 				view.showStrip();
 				view.captureAll();
-				return;
 			} else if ( data.key === 53 && view.photosComplete ) {
 				view.sendPhotoToServer();
 			} else if ( data.key >= 49 && data.key <= 52 && view.photosComplete ) {
@@ -129,9 +143,10 @@ var PhotostripView = Backbone.View.extend({
 				view.captureImage(3, function(){
 					view.captureImage(4, function() {
 						view.photosComplete = true;
+
 						App.trigger('show:modal', {
-							text: 'Awesome, you did it!',
-							timeout: 2000
+							text: 'Awesome, you did it! Press buttons 1-4 to retake your pictures, and when you\'re finished press "Done".',
+							timeout: 4000
 						});
 					});
 				});
@@ -151,6 +166,9 @@ var PhotostripView = Backbone.View.extend({
 	},
 
 	sendPhotoToServer: function() {
+
+		var view = this;
+
 		$('#photostrip').html2canvas({onrendered: function(canvas){
 			$.ajax({
 				url: '/services/savecanvas.php',
@@ -160,7 +178,15 @@ var PhotostripView = Backbone.View.extend({
 					img: canvas.toDataURL()
 				},
 				success: function(data){
-					alert('sent');
+
+					App.trigger('show:modal', {
+						text: 'Photostrip sent to our Flickr account! You can grab them when you get home. Photobooth restarting in 10 seconds!',
+						timeout: 8000,
+						cb: function(){
+							view.unload();
+							view.instructionalModal();
+						}
+					});
 				},
 				error: function(msg){
 					console.log(msg);

@@ -16,6 +16,7 @@
 
 		<link rel="stylesheet" href="stylesheets/reset.css" media="screen" />
 		<link rel="stylesheet" href="stylesheets/app/app.css" media="screen" />
+		<link rel="stylesheet" href="stylesheets/app/webfonts.css" media="screen" />
 		<script>
 			document.write('<link rel="stylesheet" href="stylesheets/app/javascript.css" media="screen" />');
 		</script>

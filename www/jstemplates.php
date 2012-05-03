@@ -25,7 +25,7 @@
 		<div id="button_2">2</div>
 		<div id="button_3">3</div>
 		<div id="button_4">4</div>
-		<div id="button_5">5</div>
+		<div id="button_5">Done</div>
 	</div>
 </script>
 
