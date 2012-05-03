@@ -21,7 +21,7 @@ var PhotostripView = Backbone.View.extend({
 	},
 
 	render: function() {
-		var indexTemplate = _.template($('#example_backbone_template').html());
+		var indexTemplate = _.template($('#photostrip_template').html());
 		this.el.html(indexTemplate);
 	},
 

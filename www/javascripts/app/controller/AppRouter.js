@@ -9,6 +9,8 @@ var AppRouter = Backbone.Router.extend({
 
 		// Initialize Section Views
 		photostripView = new PhotostripView();
+		navView = new NavView();
+		modalView = new ModalView();
 
 		log("Backbone : AppRouter : Initialized");
 	},

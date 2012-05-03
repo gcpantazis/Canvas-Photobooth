@@ -21,31 +21,15 @@
 		</script>
 		<link rel="stylesheet" href="stylesheets/app/print.css" media="print" />
 
-		<script type="text/template" id="example_backbone_template">
-			<div id="photostrip">
-				<div id="logo">
-					<h2>Amanda and George</h2>
-				</div>
-				<div id="photo1" class="slide">
-					<div class="slide_overlay"></div>
-				</div>
-				<div id="photo2" class="slide">
-					<div class="slide_overlay"></div>
-				</div>
-				<div id="photo3" class="slide">
-					<div class="slide_overlay"></div>
-				</div>
-				<div id="photo4" class="slide">
-					<div class="slide_overlay"></div>
-				</div>
-			</div>
-		</script>
+		<?php include("jstemplates.php"); ?>
 
 	</head>
 	<body>
 
 		<div id="section_main">
 			<div id="section_content"></div>
+			<div id="section_nav"></div>
+			<div id="section_modal"></div>
 		</div>
 
 		<script src="javascripts/lib/LAB-debug.min.js"></script>
@@ -64,6 +48,8 @@
 				// Backbone - Models
 				// Backbone - Views
 				.script('javascripts/app/view/PhotostripView.js')
+				.script('javascripts/app/view/NavView.js')
+				.script('javascripts/app/view/ModalView.js')
 				// Site-Specific JS - Global
 				.script('javascripts/app/app.utilities.js').wait()
 				.script('javascripts/app/app.global.js').wait(function() {
