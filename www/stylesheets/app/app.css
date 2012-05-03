@@ -21,3 +21,10 @@ h2 { background-image: url("../../images/ui/logo.png"); background-position: cen
 #photostrip .slide_overlay { background-image: url("/images/ui/photo_slide.png"); background-repeat: no-repeat; z-index: 2; }
 #photostrip .slide img { left: -40px; top: -100%; width: auto; }
 #photostrip .slide img.active { top: 0; }
+
+#navigation > div { background: none repeat scroll 0 0 rgba(255, 255, 255, 0.7); border-radius: 0 20px 20px 0; color: rgba(0, 0, 0, 0.75); font-size: 40px; font-weight: bold; height: 80px; line-height: 80px; position: fixed; text-align: center; width: 80px; }
+#navigation #button_1 { top: 100px; }
+#navigation #button_2 { top: 300px; }
+#navigation #button_3 { top: 500px; }
+#navigation #button_4 { top: 700px; }
+#navigation #button_5 { border-radius: 20px 0 0 20px; right: 0; top: 100px; }

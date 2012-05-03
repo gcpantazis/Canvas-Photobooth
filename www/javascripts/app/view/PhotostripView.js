@@ -129,6 +129,10 @@ var PhotostripView = Backbone.View.extend({
 				view.captureImage(3, function(){
 					view.captureImage(4, function() {
 						view.photosComplete = true;
+						App.trigger('show:modal', {
+							text: 'Awesome, you did it!',
+							timeout: 2000
+						});
 					});
 				});
 			});

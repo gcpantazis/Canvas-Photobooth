@@ -31,6 +31,6 @@
 
 <script type="text/template" id="modal_template">
 	<div id="modal">
-		Text For Modal
+		<%= text %>
 	</div>
 </script>
