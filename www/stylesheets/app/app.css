@@ -14,7 +14,7 @@ h2 { background-image: url("../../images/ui/logo.png"); background-position: cen
 }
 
 #photostrip { background-image: url("../../images/ui/strip_bg.jpg"); background-position: center center; box-shadow: 0 0 50px rgba(0, 0, 0, 0.5); left: 50%; margin: 0 0 20px -130px; padding: 10px; position: absolute; top: -1200px; }
-#photostrip.active { top: 120px; }
+#photostrip.active { top: 210px; }
 #photostrip .slide { background-image: url("../../images/ui/photo_slide_bg.jpg"); background-position: center top; background-size: 190% auto; height: 240px; overflow: hidden; position: relative; width: 240px; }
 #photostrip .slide_overlay,
 #photostrip .slide img { height: 100%; left: 0; position: absolute; top: 0; width: 100%; z-index: 0; }
@@ -23,11 +23,11 @@ h2 { background-image: url("../../images/ui/logo.png"); background-position: cen
 #photostrip .slide img.active { top: 0; }
 
 #navigation > div { background: none repeat scroll 0 0 rgba(255, 255, 255, 0.7); border-radius: 0 20px 20px 0; color: rgba(0, 0, 0, 0.75); font-size: 40px; font-weight: bold; height: 41px; padding: 22px 0; position: fixed; text-align: center; width: 122px; }
-#navigation #button_1 { top: 100px; }
-#navigation #button_2 { top: 300px; }
-#navigation #button_3 { top: 500px; }
-#navigation #button_4 { top: 700px; }
-#navigation #button_5 { border-radius: 20px 0 0 20px; right: 0; top: 100px; }
+#navigation #button_1 { top: 404px; }
+#navigation #button_2 { top: 579px; }
+#navigation #button_3 { top: 767px; }
+#navigation #button_4 { top: 965px; }
+#navigation #button_5 { border-radius: 20px 0 0 20px; right: 0; top: 537px; }
 
 #section_modal { background: none repeat scroll 0 0 rgba(255, 255, 255, 0.75); height: 100%; left: 0; position: fixed; top: 0; width: 100%; z-index: 100; }
 #modal { background-image: url("../../images/ui/strip_bg.jpg"); border: 4px solid #777777; border-radius: 20px 20px 20px 20px; box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); color: #444444; font-size: 33px; height: 210px; left: 50%; margin: -135px 0 0 -240px; padding: 40px; position: absolute; text-align: center; text-shadow: 0 0 10px rgba(255, 255, 255, 0.95); top: 50%; width: 440px; }
