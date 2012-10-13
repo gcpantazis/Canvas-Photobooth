@@ -1,6 +1,9 @@
 Canvas Photobooth
 =============================================================
+
 This project's goal is to develop an OSX web-based photobooth that accesses the camera via a server-side script, avoiding fragility of Flash camera shims. Overall I want to make something that will just "work" when I load the browser, as I don't want to have to baby it during usage. Secondarily, it sends the photos to a predefined email address, which I use to post to Flickr.
+
+**(10/13/2012):** This worked exactly as we hoped it would during our reception; [check out some of the results on my site](http://www.georgepantazis.com/2012/04/diy-html-photobooth/).
 
 How to use
 -------------------------------------------------------------
