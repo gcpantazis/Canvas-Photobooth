@@ -199,7 +199,7 @@ var PhotostripView = Backbone.View.extend({
 				success: function(data){
 
 					App.trigger('show:modal', {
-						text: 'Photostrip upload! You can grab them when you get home at http://emilyandkevin.herokuapps.com. Photobooth restarting in 10 seconds!',
+						text: 'Photostrip upload! You can grab them when you get home at http://bit.ly/emily-and-kevin. Photobooth restarting in 10 seconds!',
 						timeout: 9000,
 						cb: function(){
 							view.unload();
