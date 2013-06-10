@@ -3,6 +3,6 @@
 	$username = 'USERNAME';
 	$password = 'PASSWORD';
 
-	$flickrSendEmailAddress = "SOMEEMAIL@photos.flickr.com";
+  $compositeStorage = '/Users/foo.user/some/folder/on/your/machine';
 
 ?>

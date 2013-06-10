@@ -94,11 +94,17 @@ var PhotostripView = Backbone.View.extend({
 		if ( $image.length === 0 ) {
 			if (cb) cb();
 		} else {
-			$image.removeClass('active');
-			$image.on('transitionend webkitTransitionEnd', function(){
-				$(this).remove();
+
+			if ($image.hasClass('active')) {
+				$image.removeClass('active');
+				$image.on('transitionend webkitTransitionEnd', function(){
+					$(this).remove();
+					if (cb) cb();
+				});
+			} else {
+				$image.remove();
 				if (cb) cb();
-			});
+			}
 		}
 
 	},
@@ -122,10 +128,16 @@ var PhotostripView = Backbone.View.extend({
 
 					// Really should use imagesloaded here.
 					_.delay(function(){
-						$image.addClass('active');
-					}, 500);
 
-					if (cb) cb();
+						// In OSX Lion `isightcapture` isn't super reliable; as such
+						// I need to verify that this is a good image before proceeding.
+						if ( $image.get(0).naturalWidth > 0 ) {
+							$image.addClass('active');
+							if (cb) cb();
+						} else {
+							view.captureImage(whichSlide, cb);
+						}
+					}, 500);
 				}
 			});
 		});
