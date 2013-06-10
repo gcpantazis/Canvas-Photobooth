@@ -156,9 +156,14 @@ var PhotostripView = Backbone.View.extend({
 					view.captureImage(4, function() {
 						view.photosComplete = true;
 
+						view.modalUp = true;
+
 						App.trigger('show:modal', {
 							text: 'Awesome, you did it! Press buttons 1-4 to retake your pictures, and when you\'re finished press "Done".',
-							timeout: 4000
+							timeout: 4000,
+							cb: function() {
+								view.modalUp = false;
+							}
 						});
 					});
 				});
@@ -181,6 +186,8 @@ var PhotostripView = Backbone.View.extend({
 
 		var view = this;
 
+		if ( view.modalUp ) return;
+
 		$('#photostrip').html2canvas({onrendered: function(canvas){
 			$.ajax({
 				url: '/services/savecanvas.php',
@@ -192,11 +199,13 @@ var PhotostripView = Backbone.View.extend({
 				success: function(data){
 
 					App.trigger('show:modal', {
-						text: 'Photostrip sent to our Flickr account! You can grab them when you get home. Photobooth restarting in 10 seconds!',
-						timeout: 8000,
+						text: 'Photostrip upload! You can grab them when you get home at http://emilyandkevin.herokuapps.com. Photobooth restarting in 10 seconds!',
+						timeout: 9000,
 						cb: function(){
 							view.unload();
-							view.instructionalModal();
+							_.delay(function(){
+								view.instructionalModal();
+							}, 500);
 						}
 					});
 				},

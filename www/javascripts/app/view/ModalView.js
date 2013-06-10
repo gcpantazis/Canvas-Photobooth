@@ -25,6 +25,7 @@ var ModalView = Backbone.View.extend({
 	render: function(message) {
 
 		if ( !message ) return;
+		if ( App.modalActive ) return;
 
 		App.modalActive = true;
 
@@ -55,8 +56,9 @@ var ModalView = Backbone.View.extend({
 
 	hide: function() {
 
-		this.el.fadeOut(350);
-		App.modalActive = false;
+		this.el.fadeOut(350, function(){
+			App.modalActive = false;
+		});
 
 	}
 
