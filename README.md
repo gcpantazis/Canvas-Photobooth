@@ -30,6 +30,7 @@ TODO
 -------------------------------------------------------------
 
   * Figure out how to execute the bash script from PHP without sudoing.
+  * Ideally I'd like to convert this app to work with NodeJS, and create a secondary viewer app that hooks into the Dropbox API, with Heroku procfiles ready to go. So all I'd need to do would be `node photobooth.js` locally, and push the viewer to a fresh Heroku instance. Badabing badaboom.
 
 
 Notes
