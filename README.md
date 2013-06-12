@@ -1,6 +1,8 @@
 Canvas Photobooth
 =============================================================
 
+![The Photobooth](https://dl.dropboxusercontent.com/u/34601809/photobooth.jpg)
+
 This project's goal is to develop an OSX web-based photobooth that accesses the camera via a server-side script, avoiding fragility of Flash camera shims. Overall I want to make something that will just "work" when I load the browser, as I don't want to have to baby it during usage. Secondarily, it saves the compiled filmstrips to a folder of your choosing; I'm using my Dropbox so that they become instantly available the next time my computer gets an Internet connection.
 
 **(10/13/2012):** This worked exactly as we hoped it would during our reception; [check out some of the results on my site](http://www.georgepantazis.com/2012/04/diy-html-photobooth/).
@@ -11,6 +13,10 @@ If you want to try to use this, you'll need the following:
 
   * An Arduino board to run the buttons (but as mentioned below, you could just hack a keyboard apart instead)
   * MAMP, or some other Apache/PHP setup. I use MAMP Pro.
+
+The styles are fairly specific to the photobooth I built, the display case of which is shown above. You'd probably want to restyle it a bit to fit your needs.
+
+![UI Screenshot](https://dl.dropboxusercontent.com/u/34601809/photobooth-demo.jpg)
 
 Current Status
 -------------------------------------------------------------
